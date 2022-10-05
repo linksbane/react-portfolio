@@ -40,7 +40,7 @@ export default class PortfolioForm extends Component {
     deleteImage(imageType) {
         axios.delete(
             `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}?image_type=${imageType}`,
-        {withCredentials: true}
+        { withCredentials: true }
         ).then(response => {
             this.setState({
                 [`${imageType}_url`]: ""
@@ -236,7 +236,7 @@ export default class PortfolioForm extends Component {
 
                 <div className='image-uploaders three-column'>
                     {this.state.thumb_image_url && this.state.editMode ? (
-                        <div className='portfolio-manager-image-wrapper'>
+                        <div className='image-wrapper'>
                             <img src={this.state.thumb_image_url} />
 
                             <div className='image-removal-link'>
@@ -256,7 +256,7 @@ export default class PortfolioForm extends Component {
                     </DropzoneComponent>
                     )}
                     {this.state.banner_image_url && this.state.editMode ? (
-                        <div className='portfolio-manager-image-wrapper'>
+                        <div className='image-wrapper'>
                             <img src={this.state.banner_image_url} />
 
                             <div className='image-removal-link'>
@@ -276,7 +276,7 @@ export default class PortfolioForm extends Component {
                     </DropzoneComponent>
                     )}
                     {this.state.logo_url && this.state.editMode ? (
-                        <div className='portfolio-manager-image-wrapper'>
+                        <div className='image-wrapper'>
                             <img src={this.state.logo_url} />
 
                             <div className='image-removal-link'>

@@ -367,7 +367,7 @@
   .rdw-embedded-modal {
     position: absolute;
     top: 35px;
-    left: 5px;
+    left: -124px;
     display: flex;
     flex-direction: column;
     width: 235px;
@@ -471,7 +471,7 @@
     overflow: auto;
     position: absolute;
     top: 35px;
-    left: 5px;
+    left: -169px;
     display: flex;
     flex-wrap: wrap;
     width: 235px;
@@ -549,7 +549,7 @@
   .rdw-image-modal {
     position: absolute;
     top: 35px;
-    left: 5px;
+    left: -215px;
     display: flex;
     flex-direction: column;
     width: 235px;
@@ -867,6 +867,9 @@
   }
   .DraftEditor-root {
     position: relative;
+    border: 1px solid #f1f1f1;
+    padding: 20px;
+    border-radius: 3px;
   }
   .DraftEditor-editorContainer {
     background-color: rgba(255, 255, 255, 0);

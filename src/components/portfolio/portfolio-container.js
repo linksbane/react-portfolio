@@ -17,25 +17,31 @@ export default class PortfolioContainer extends Component {
     }
 
     handleFilter(filter) {
-        this.setState({
-            data: this.state.data.filter(item => {
-                return item.category === filter;
-            })
-        });
+        if (filter === "CLEAR_FILTERS") {
+            this.getPortfolioItems();
+        } else {
+            this.getPortfolioItems(filter);
+        }
     }
 
-    getPortfolioItems() {
-        axios
-          .get("https://philiproberts.devcamp.space/portfolio/portfolio_items")
-          .then(response => {
-            this.setState({
-                data: response.data.portfolio_items
-            });
-          })
-          .catch(error => {
+    getPortfolioItems(filter = null) {
+        axios.get("https://philiproberts.devcamp.space/portfolio/portfolio_items")
+        .then(response => {
+            if (filter) {
+                this.setState({
+                    data: response.data.portfolio_items.filter(item => {
+                        return item.category === filter;
+                    })
+                });
+            } else {
+                this.setState({
+                    data: response.data.portfolio_items
+                });
+            }
+        }).catch(error => {
             console.log(error);
-          });
-      }
+        });
+    }
 
     portfolioItems() {
         return this.state.data.map(item => {
@@ -55,11 +61,16 @@ export default class PortfolioContainer extends Component {
         }
 
         return (
-            <div className='portfolio-items-wrapper'>
-                <button className='btn' onClick={() => this.handleFilter("Customer Service")}>Customer Service</button>
-                <button className='btn' onClick={() => this.handleFilter("Video Production")}>Video Production</button>
-                <button className='btn' onClick={() => this.handleFilter("Placeholder")}>Placeholder</button>
-                {this.portfolioItems()}
+            <div className='homepage-wrapper'>
+                <div className='filter-links'>
+                    <button className='btn' onClick={() => this.handleFilter("Customer Service")}>Customer Service</button>
+                    <button className='btn' onClick={() => this.handleFilter("Video Production")}>Video Production</button>
+                    <button className='btn' onClick={() => this.handleFilter("Placeholder")}>Placeholder</button>
+                    <button className='btn' onClick={() => this.handleFilter("CLEAR_FILTERS")}>All</button>
+                </div>
+                <div className='portfolio-items-wrapper'>
+                    {this.portfolioItems()}
+                </div>
             </div>
         );
     }
