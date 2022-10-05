@@ -2,6 +2,9 @@
   "name": "philip-roberts-react-portfolio",
   "version": "1.0.0",
   "description": "Personal protfolio app built in React",
+  "engines": {
+    "node": "8.9.4"
+  },
   "scripts": {
     "preinstall": "npm set audit false",
     "start": "webpack-dev-server --config webpack/dev.config.js --watch",
